@@ -17,4 +17,10 @@ jobs:
          docker --version
          docker compose vrsion
          systemctl status docker
-
+     -  name: mystep2 checkout sourse code
+        uses: action/checkout@v4
+     -  name: step3 workspace
+         run: ls -al
+    # -  name mystep4- build Docker image
+     #    run: |
+         
