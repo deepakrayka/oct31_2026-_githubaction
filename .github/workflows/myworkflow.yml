@@ -15,6 +15,6 @@ jobs:
          pwd
          ls -al
          docker --version
-         docker comppose vrsion
+         docker compose vrsion
          systemctl status docker
 
