@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Step 1: Check system information
       - name: mystep1
         run: |
           whoami
@@ -17,23 +18,31 @@ jobs:
           docker --version
           docker compose version
 
+      # Step 2: Checkout source code
       - name: mystep2 checkout source code
         uses: actions/checkout@v4
 
+      # Step 3: Check workspace
       - name: step3 workspace
         run: ls -al
 
+      # Step 4: Build Docker image
       - name: mystep4 build Docker image
         run: |
-          docker image build  -t deepakrayka/myimage_31:t${{ github.run_number }} -f Dockerfile .
-      - name: mystep5- image build
+          docker image build -t deepakrayka/myimage_31:t${{ github.run_number }} -f Dockerfile .
+
+      # Step 5: Check Docker images
+      - name: mystep5 image build
         run: docker images
-      - name: mystep6 -docker login
+
+      # Step 6: Docker Hub login
+      - name: mystep6 docker login
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: step7- push the image to docker registry
-         run: |
-           docker image push deepakrayka/myimage_31:t${{ github.run_number }}
-      
+
+      # Step 7: Push image to Docker Hub
+      - name: mystep7 push the image to docker registry
+        run: |
+          docker image push deepakrayka/myimage_31:t${{ github.run_number }}
