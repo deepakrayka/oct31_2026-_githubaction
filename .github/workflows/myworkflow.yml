@@ -11,6 +11,6 @@ jobs:
      - name: mystep1  
        run: |
          whoami
-         cat /etc/os-releas
+         cat /etc/os-release
          pwd
          ls -al
