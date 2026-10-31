@@ -25,6 +25,6 @@ jobs:
 
       - name: mystep4 build Docker image
         run: |
-          docker image build  -t deepakrayka/myimage_31:t${{ github_run_number }} -f Dockerfile .
+          docker image build  -t deepakrayka/myimage_31:t${{ github.run_number }} -f Dockerfile .
       - name: mystep5- image build
         run: docker images
