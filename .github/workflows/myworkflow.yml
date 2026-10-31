@@ -1,26 +1,30 @@
 name: myworkflow_oct31
-  
+
 on:
-   push:
-     
+  push:
+
 jobs:
   myjobs1:
     runs-on: ubuntu-latest
-    
+
     steps:
-     - name: mystep1  
-       run: |
-         whoami
-         cat /etc/os-release
-         pwd
-         ls -al
-         docker --version
-         docker compose vrsion
-         systemctl status docker
-     -  name: mystep2 checkout sourse code
-        uses: action/checkout@v4
-     -  name: step3 workspace
-         run: ls -al
-    # -  name mystep4- build Docker image
-     #    run: |
-         
+      - name: mystep1
+        run: |
+          whoami
+          cat /etc/os-release
+          pwd
+          ls -al
+          docker --version
+          docker compose version
+
+      - name: mystep2 checkout source code
+        uses: actions/checkout@v4
+
+      - name: step3 workspace
+        run: ls -al
+
+      - name: mystep4 build Docker image
+        run: |
+          docker image build  -t deepakrayka/myimage_31:t${{ github_run_number }} -f Dockerfile .
+      - name: mystep5- image build
+        run: docker images
