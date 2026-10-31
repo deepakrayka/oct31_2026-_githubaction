@@ -1,15 +1,15 @@
 name: myworkflow_oct31
   
-on:
+ on:
   push:
-myjobs:
-  myjob1:
+ jobs:
+  myjobs1:
     runs-on: ubuntu-latest
     
     steps:
      - name: mystep1  
        run: |
          whoami
-         cat/etc/os-releas
+         cat /etc/os-releas
          pwd
          ls -al
